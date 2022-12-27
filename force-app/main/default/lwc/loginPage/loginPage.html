@@ -1,0 +1,89 @@
+<template>
+  <lightning-card>
+   
+      <lightning-layout multiple-rows>
+        <div class="slds-align_absolute-center">
+          <div class="slds-grid slds-grid_vertical">
+            <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large" >
+                <span class="slds-align_absolute-center" style="color:Black"><B>Login</B></span>
+            </div>
+            <div class="email">
+                <lightning-input name="email" 
+                type="email" 
+                label="Email"
+                placeholder="abc@gmail.com" 
+                onclick={emailh}
+                onchange={emailHandler}
+                pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" 
+                message-when-pattern-mismatch="Please enter a valid email" 
+                required></lightning-input>
+            </div>
+            
+            <div class="password">
+                <lightning-input type={passwordType}
+                label="Password" 
+                placeholder="Password" 
+                id="mypassword"
+                value={password}
+                onchange={passwordHandler}
+                required="true">
+                </lightning-input> 
+            </div>
+            <br>
+              <div style="white-space: pre">
+                <lightning-input label="show password"
+                type="checkbox" 
+                onclick={checkboxhandler}>
+                </lightning-input>
+              </div>
+               
+                
+            
+                   </br>
+              <div class="slds-col">
+                <lightning-button variant="brand" 
+                label="Login"
+                title="Primary action" 
+                onclick={handleLogin} 
+                class="login-button slds-button">
+                </lightning-button>
+              </div>
+                   
+          </div>
+        </div>
+       </br>
+
+     </lightning-layout>
+   <template if:true={errorCheck}>
+      <div class="error slds-var-p-around_x-small slds-var-p-top_small" role="alert">
+      <span style="color:Red">{errorMessage}</span>
+      </div>
+  </template>
+     <div class="slds-clearfix">
+      <div class="slds-float_left">
+        <div class="slds-p-left_xxx-small">
+           <div class="slds-col" style="height:4rem">
+               <b><a href="https://raagvitech-a8-dev-ed.develop.my.site.com/newproject/secur/forgotpassword.jsp?startURL=/newproject/s/">
+                      <lightning-button variant="brand-outline" 
+                      label="Forgot?"  
+                      ></lightning-button>
+                    </a>
+               </b>
+              </div>
+            </div>
+      </div>
+      <div class="slds-float_right">
+        <div class="slds-p-right_xxx-small">
+            <div class="slds-col" style="height:4rem">
+                    <b><a href="https://raagvitech-a8-dev-ed.develop.my.site.com/s/login/SelfRegister">
+                      <lightning-button variant="brand-outline" 
+                      label="New User" 
+                      class="slds-float_right"></lightning-button>
+                      </a>
+                   </b>
+             </div>
+            </div>
+      </div>
+     </div>
+  </lightning-card>
+</template>

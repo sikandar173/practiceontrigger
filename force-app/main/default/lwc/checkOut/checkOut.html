@@ -1,0 +1,256 @@
+<template>
+    <div class="slds-p-around_small">
+				<table class="slds-table slds-table_cell-buffer slds-table_bordered"
+					aria-labelledby="element-with-table-label other-element-with-table-label">
+					<thead>
+						<tr class="slds-line-height_reset">
+							<th class="" scope="col">
+                            
+								<div class="slds-truncate" title="Product Name">Book Name</div>
+							</th>
+
+							<th class="" scope="col">
+								<div class="slds-truncate" title="Brand">Authour Name</div>
+							</th>
+
+							<th class="" scope="col">
+								<div class="slds-truncate" title="Image">Image</div>
+							</th>
+
+							<th class="" scope="col">
+								<div class="slds-truncate" title="Quantity">Quantity</div>
+							</th>
+
+							<th class="" scope="col">
+								<div class="slds-truncate" title="Price">Price</div>
+							</th>
+
+							<th class="" scope="col">
+								<div class="slds-truncate" title="Price">TotalPrice</div>
+							</th>
+
+						</tr>
+					</thead>
+
+					<tbody>
+						<template for:each={addedItem} for:item="con">
+							<tr class="inputRows" key={con.Id}> 
+								<td data-label="Opportunity Name" scope="row">
+									<p>{con.Books_Details__r.Book_Name__c}</p>
+								</td>
+
+								<td data-label="Opportunity Name">
+									<p>{con.Books_Details__r.Author_Name__c}</p>    
+								</td>
+
+								<td data-label="Opportunity Name">
+									<p><img src={con.Books_Details__r.Image__c} height="50px" width="50px"></p>
+								</td>
+
+								<td data-label="Opportunity Name">         
+									<lightning-layout>
+										<!-- <lightning-layout-item>	
+											<lightning-button-icon icon-name="utility:dash" alternative-text="decrement" title="decrement" onclick={decrement} value={con.cartId} variant='brand'></lightning-button-icon>
+										</lightning-layout-item> -->
+										{con.count}
+										<!-- <lightning-layout-item class="input">
+											<lightning-input type="number" value={con.quantity__c} variant="label-hidden" disabled style="width: rigth 20px;"></lightning-input>
+										</lightning-layout-item> -->
+										<!-- <lightning-layout-item>
+											<lightning-button-icon icon-name="utility:add" alternative-text="increment" title="increment" onclick={increment} value={con.cartId} variant='brand'></lightning-button-icon>
+										</lightning-layout-item> -->
+									</lightning-layout>   
+								</td>
+
+								<td data-label="Opportunity Name">
+									<p>{con.Books_Details__r.Price__c}</p>
+								</td>
+
+								<td data-label="Opportunity Name">
+									<p>{con.totalPrice}</p>
+								</td>
+								
+								<td data-label="Close Date">
+									<lightning-button-icon icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" 
+										onclick={deleteCartItem} value={con.cartId} >
+									</lightning-button-icon>
+								</td>
+
+							</tr>
+						</template>
+						<tr class="inputRows" >
+							<th data-label="Opportunity Name" scope="row">
+								<p>Total</p>
+							</th>
+							<td data-label="Total Price">
+								<p></p>
+							</td>
+							<td data-label="Total Price">
+								<p></p>
+							</td>
+							<td data-label="Total Price">
+								<p></p>
+							</td>
+							<td data-label="Total Price">
+								<p></p>
+							</td>
+							
+						
+
+							<td data-label="Total Price">
+								<p>{totalAmount}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<lightning-layout-item flexibility="auto"  class="slds-float_right">
+				<lightning-button label="Place order" variant="brand" onclick={BuyOpen} class="slds-m-left_x-small">
+				</lightning-button>
+			</lightning-layout-item>
+			<template if:true={isBuyOpen}>
+				<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+					aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+					<div class="slds-modal__container">
+						 <header class="slds-modal__header">
+		
+							 <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+								title="Close" onclick={uppercloseModal}>
+								<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+									size="small" onclick={closeModalBox}>
+								<span class="slds-assistive-text">Close</span></lightning-icon>
+							</button>
+							<h2 class="slds-text-heading_medium slds-hyphenate">Shipping Address</h2>
+						</header>
+						 <div class="slds-modal__content slds-p-around_medium">
+							 <div class="slds-grid">
+								<div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+									<lightning-input type="text" label="First Name" data-name="FirstName" value={FirstName} required="" onchange={submitDetails}></lightning-input>
+									<br>
+									<lightning-input type="text" label="Last Name" data-name="LastName" value={LastName} required="" onchange={submitDetails}></lightning-input>
+									<br>
+									<lightning-input type="text" label="Email" data-name="Email" value={Email} required="" onchange={submitDetails}></lightning-input>
+									<br>
+									<label class="slds-form-element__label" for="textarea-id-01">Biling Address</label>
+									<textarea id="textarea-id-01" class="slds-textarea" required="" data-name="BilingAddress" onchange={submitDetails}></textarea>
+								</div>
+								<div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+									<lightning-input type="number" label="Mobile Number" value={MobileNumber} required="" data-name="MobileNumber" onchange={submitDetails}>
+									</lightning-input><br>
+									<lightning-input type="number" label="Alternate Number" value={AlternateNumber} required="" data-name="AlternateNumber" onchange={submitDetails}>
+									</lightning-input><br>
+									<lightning-input type="text" label="House Number" value={HouseNo} required="" data-name="HouseNo" onchange={submitDetails}>
+									</lightning-input><br>
+								</div>
+							 </div> 
+							 <footer class="slds-modal__footer">
+								<button class="slds-button slds-button_brand" onclick={saveAddress}>Add to Address Book</button>
+							</footer>
+						</div>
+					</div>
+				</section>
+				<div class="slds-backdrop slds-backdrop_open">
+				</div>
+			</template> 
+		
+		
+			<template if:true={isAddress}>
+				<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+					aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+					<div class="slds-modal__container">
+						 <header class="slds-modal__header">
+							 <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+								title="Close" onclick={uppercloseModal}>
+								<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+									size="small" onclick={closeModalBox}>
+								<span class="slds-assistive-text">Close</span></lightning-icon>
+							</button>
+							<h2 class="slds-text-heading_medium slds-hyphenate">Select Billing/Shipping Address</h2>
+						</header>
+						 <div class="slds-modal__content slds-p-around_medium">
+							 <div class="slds-grid">
+								<div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+									<template for:each={AddresBook} for:item="item">
+										<div key={item.Id}> 
+												
+											<div style="display:flex">
+												
+											<div>
+												 <lightning-input type="radio"
+												 onchange={handleRadioChange}
+												 value={item.Id}
+												 name="radioselect">
+												</lightning-input>
+											</div><nbsp></nbsp>
+											<div>
+												<br>
+												{item.FirstName__c}<br>
+												{item.LastName__c}<br>
+												{item.MobileNumber__c}<br>
+												{item.AlternateNumber__c}<br>
+												{item.House_No__c}<br>
+												{item.BilingAddress__c}<br>
+												{item.postalCode__c}<br>
+											
+		
+												</div>
+											</div>
+												<br/>
+											</div>
+										</template>
+								</div>
+							 </div> 
+							 <footer class="slds-modal__footer">
+								<button class="slds-button slds-button_brand" onclick={AddNewAdress}>Add New Address</button>
+							</footer>
+						</div>
+					</div>
+				</section>
+				</template>
+
+
+			<template if:true={confirmOrder}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			   <div class="slds-modal__container" style="flex-wrap: wrap;">
+				<!-- modal header start -->
+				  <header class="slds-modal__header">
+					 <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+						<lightning-icon icon-name="utility:close"
+						   alternative-text="close"
+						   variant="inverse"
+						   size="small" ></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					 </button>
+					 <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirm Order</h2>
+				  </header>
+			  
+				  <!-- modal body start -->
+				  <div class="slds-modal__content slds-p-around slds-wrap" >
+					
+										<strong>Name :</strong>	{adressData.FirstName__c}<nbsp></nbsp> {adressData.LastName__c}<br>
+												
+										<strong>Mobile number :</strong>			{adressData.MobileNumber__c}<br>
+										<strong>Alternate Mobile Number :</strong>			{adressData.AlternateNumber__c}<br>
+										<strong>House No:</strong>			{adressData.House_No__c}<br>
+										<strong>Address:</strong>		{adressData.BilingAddress__c}<br>
+										<strong>postalCode :</strong>			{adressData.postalCode__c}<br>
+										<br>
+										<br>
+										<strong><i>Total Amount :</i>{totalAmount}</strong>
+							
+				  </div>
+				 
+		
+				  <!-- modal footer start-->
+				  <footer class="slds-modal__footer">
+					 <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+					 <button class="slds-button slds-button_neutral" onclick={placeOrder}>Confirm Order</button>
+				  </footer>
+			   
+			   </div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		 </template>
+		 <!-- modal end -->
+			
+</template>

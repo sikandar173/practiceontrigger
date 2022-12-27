@@ -1,0 +1,51 @@
+/* universal selector - to apply styles for body */
+*{
+    background-color: #f7eaa0;
+}
+
+/* styles for image and name of video*/
+.imgsize
+{
+    padding: 10px;
+    align-items: center;
+    width: 300px;
+    height: 212px;
+}
+
+.vidname
+{
+    padding: 3px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    font-weight: 300;
+    color: rgb(118, 73, 36);
+}
+
+.vidname:hover
+{
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+/* binge it heading style */
+.heading
+{
+    color: rgb(116, 93, 46);
+    font-size: 2rem;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.subheading
+{
+    text-align: center;
+    color: rgb(116, 93, 46);
+    padding: 10px;
+}
+
+/* user icon */
+.usericon
+{
+   width: fit-content;
+   height: fit-content;
+}

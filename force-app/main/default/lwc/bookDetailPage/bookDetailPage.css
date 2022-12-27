@@ -1,0 +1,16 @@
+*{
+    background-color: black;
+    color: beige;
+}
+.heading{
+    font-size: 2rem;
+    padding: 10px;
+    margin-left: 10px; 
+}
+.logo{
+    text-align: right;
+}
+.User{
+    text-align: right;
+    cursor: pointer;
+}

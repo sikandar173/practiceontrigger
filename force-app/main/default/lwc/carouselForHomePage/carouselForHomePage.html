@@ -1,0 +1,48 @@
+<template>     
+ <article class="slds-card">               
+  <div class="slds-container_large slds-align_absolute-center">
+     <div class="lightningcard">
+          <lightning-card>
+            <div class="caroueslcontent">
+              <div class="slds-card__body slds-card__body_inner" style="height:50%; width:100%"> 
+                 <div class="filter">
+                  <lightning-carousel>
+                        
+                        <lightning-carousel-image 
+                                src = {book1}
+                                header = "Book"
+                                alternative-text = "Unable to show book."
+                                 class="image1"
+                                href = "https://raagvitech-a8-dev-ed.develop.my.site.com/newproject/s/bookhomepage">
+                      
+                        </lightning-carousel-image>
+             
+                        <lightning-carousel-image       
+                                src = {watch}
+                                header = "Vidio"
+                                alternative-text = "Unable to show vidio list"
+                                href = "https://raagvitech-a8-dev-ed.develop.my.site.com/newproject/s/videohomepage">
+                        </lightning-carousel-image>
+
+                        <lightning-carousel-image
+                                src = {book}
+                                header = "Book"
+                                alternative-text = "Unable to show book"
+                                href = "https://raagvitech-a8-dev-ed.develop.my.site.com/newproject/s/bookhomepage">
+                        </lightning-carousel-image>
+
+                        <lightning-carousel-image
+                                src = {watch1}
+                                header = "Vidio"
+                                alternative-text = "Unable to show vidio list"
+                                href = "https://raagvitech-a8-dev-ed.develop.my.site.com/newproject/s/videohomepage">
+                        </lightning-carousel-image>
+                   </lightning-carousel>
+                 </div>
+               </div>  
+              </div>
+        </lightning-card>
+     </div>
+   </div>             
+</article>
+</template>

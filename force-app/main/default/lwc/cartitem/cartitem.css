@@ -1,0 +1,30 @@
+
+.count{
+    
+    width: 40px;
+    position: relative;
+  
+}
+.quantity{
+  padding-right: 100px;  
+}
+.slds-grid {
+    display: flex;
+    padding-right: 100px;
+    padding-top: 10px;
+}
+.delete{
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.saveitlater{
+    padding-left: 10px;
+    padding-bottom: 30px;
+}
+.topcheckout{
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.decrement{
+    width:40px;
+}
