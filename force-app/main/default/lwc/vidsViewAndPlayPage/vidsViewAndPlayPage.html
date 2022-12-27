@@ -1,0 +1,32 @@
+<template >
+    <div>
+        <!-- logo and heading and user button -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col">
+                <h1 class="heading">Books N Vids</h1>
+            </div>
+            <div class="slds-col_bump-left">
+                <lightning-button-icon icon-name="action:user" alternative-text="My Profile" class="slds-p-around_medium usericon"></lightning-button-icon>
+            </div>        
+        </div>
+        <!-- logo and heading and user button Ends here -->
+
+        <!-- layouts for videos  -->
+        <div style="padding: 20px;">
+            <h6>WATCH  {displayvidname} </h6>
+            <!-- trying with dynamic values -->
+            <div class="slds-grid slds-grid_align-space vidslayout">
+                <iframe width="642" 
+                        height="361"
+                        id="ifr" 
+                        src={embededlink}
+                        frameborder="0" 
+                        onfocus={onvideoplay}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" 
+                        allowfullscreen></iframe>
+            </div>
+
+        </div>        
+        <!-- 2 layouts for videos Ends here -->
+    </div>
+</template>

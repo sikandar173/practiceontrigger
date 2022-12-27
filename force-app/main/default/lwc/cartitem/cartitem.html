@@ -1,0 +1,74 @@
+<template>
+  <lightning-card>
+        <div class="topcheckout">
+                <lightning-button  variant="brand" label="Check out"
+                class="slds-float_right" onclick={Checkout}></lightning-button>
+                <br>
+        </div>
+        <br>
+        <div class="slds-grid slds-wrap">
+           <template for:each={addedItem} for:item="str">
+              <div class="slds-col" key={str.Id}> 
+                 <div class="slds-col_padded" style="display: flex">
+                            <div  class="slds-p-bottom_medium">
+                            <span>
+                            <img src={str.Books_Details__r.Image__c} style="height: 150px; width:100px">
+                            </span>     
+                            </div>     
+                        <div class="slds-p-left_medium" >            
+                            <p><strong>Book Name:- </strong>{str.Books_Details__r.Book_Name__c} </p>
+                            <p><strong>Author Name:- </strong>{str.Books_Details__r.Author_Name__c}</p>  
+                            <p><strong>Publisher Name:- </strong>{str.Books_Details__r.Publisher_Name__c}</p>
+                            <p><strong>Price:- </strong>{str.Books_Details__r.Price__c}</p>
+                                 <div claas="quantity">
+                                    <lightning-layout horizontal-align="end">      
+                                        <lightning-layout-item >
+                                        
+                                        <lightning-button-icon icon-name="utility:dash" data-id={str.Id} alternative-text="decrement" title="decrement" onclick={decrement} value={str.Books_Details__r.Id} variant='brand'></lightning-button-icon>
+                                        
+                                        </lightning-layout-item>   
+                                        <lightning-layout-item >
+                                        <div class="count">           
+                                        <lightning-input type="number" value={str.count} variant="label-hidden" disabled></lightning-input>                             
+                                        </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item>
+                                        <lightning-button-icon icon-name="utility:add" data-id={str.Id}  alternative-text="increment" title="increment" onclick={increment} value={str.Books_Details__r.Id} variant='brand'></lightning-button-icon>
+                                        </lightning-layout-item>
+                                        </lightning-layout>
+                                 </div>
+                             <div class="delete">
+                                        <lightning-button-icon icon-name="utility:delete" 
+                                        variant="border-filled"
+                                        alternative-text="Delete"  
+                                        class="slds-m-left_xx-small" 
+                                        title="Delete"
+                                        onclick={handledelete}
+                                        value={str.Id}>
+                                        </lightning-button-icon>
+                              </div>
+                        </div>
+                   </div>
+                        <div class="saveitlater">
+                                <input type='checkbox' value={str.Books_Details__r.Id} onchange={saveLaterRecordCart}>
+                                <span ><b><i>Save It Later</i></b></span>
+                            <!-- <span class="slds-badge slds-theme_success"  value={str.Id} onclick={saveLaterRecordCart}>SaveitLater</span> -->
+                        </div>    
+                </div>
+           </template>
+        </div> <hr>
+            <!-- <div  class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Check out"
+                    class="slds-m-left_x-small" onclick={checkout}></lightning-button>
+           </div>  -->
+           <div  class="slds-align_absolute-center">
+            <b><a href="https://raagvitech-a8-dev-ed.develop.my.site.com/s/bookhomepage/checkout">
+              <lightning-button variant="brand-outline" 
+              label="Check out"
+              onclick={checkout} 
+              class="slds-float_right"></lightning-button>
+              </a>
+           </b>
+     </div>
+    </lightning-card>
+</template>

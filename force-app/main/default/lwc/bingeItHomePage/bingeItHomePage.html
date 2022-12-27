@@ -1,0 +1,76 @@
+<template>
+    <lightning-card>
+        <!-- logo and heading -->
+        <div class="slds-grid">
+            <div class="slds-col">
+                <h1 class="heading">Books N Vids</h1>
+            </div>
+        
+            <div class="slds-col">
+                <lightning-layout multiple-rows="">
+                    <lightning-layout-item size="2" padding="around-small" small-device-size="8" medium-device-size="8" large-device-size="8">
+                        <!-- <div class="logo">
+                            <lightning-icon icon-name="action:user">
+                            </lightning-icon>
+                        </div> -->
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+        <!-- logo and heading Ends here -->
+
+        <!-- navigation button (about , contact ) -->
+        <ul class="slds-grid navbar slds-grid_align-end">
+            <li class="slds-col">
+            <a class="login" label="Log In here">Log In here</a>
+            </li>
+            <li class="slds-col">
+            <a class="signup" label="Sign Up Here">Sign Up Here</a>
+            </li>
+            <li class="slds-col">
+            <a class="contus" label="Contact Us">Contact Us</a>
+            </li>
+        </ul>
+        <!-- navigation button (about , contact ) Ends  here-->
+
+        <!-- 2 layouts for books and videos  -->
+        <lightning-layout >
+            <lightning-layout-item size="6" class="slds-box bookslayout">
+                <div class="slds-align_absolute-center">
+                    
+                    <img src={bookImage}>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="slds-box vidslayout">
+                <div class="slds-align_absolute-center">
+                   <img src={watchImage}>
+                </div>
+
+            </lightning-layout-item>
+        </lightning-layout>        
+        <!-- 2 layouts for books and videos Ends here -->
+        
+    </lightning-card>
+</template>
+
+
+
+<!-- ROUGH code area  ***(Dont care this )*** -->
+<!-- <template>
+    <div class="slds-grid">
+        <div class="slds-col">
+            <h1 class="heading">BingeIt.in</h1>
+        </div>
+
+        <div class="slds-col">
+            <lightning-layout multiple-rows="">
+                <lightning-layout-item size="2" padding="around-small" small-device-size="8" medium-device-size="8" large-device-size="8">
+                <div class="logo">
+                    <lightning-icon icon-name="action:user">
+                    </lightning-icon>
+                </div>
+        </ldiv>
+                </lightning-layout-item>
+        
+    </div>
+</template> -->

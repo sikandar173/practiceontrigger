@@ -1,0 +1,52 @@
+<template>
+    <div>
+        <!-- logo and heading and user button -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col">
+                <h1 class="heading">Books N Vids</h1>
+            </div>        
+        </div>
+        <!-- logo and heading and user button Ends here -->
+
+        <!-- layouts for videos  -->
+        <div style="padding: 20px;">
+
+            <!-- trying with dynamic values -->
+            <h6 class="subheading">Anime List</h6>
+            <div class="slds-grid slds-wrap vidslayout">
+                <!-- loop to display videos -->
+                <template for:each={videolist} for:item="v">  
+                    <div key={v.Id} class="slds-col slds-size_1-of-6">
+                        <img src={v.Thumbnail__c} class="imgsize"/>
+                        <a class="slds-align_absolute-center vidname" 
+                            onclick={onClickOfVideoName}
+                            target="_blank"
+                            href={selectedvideourl}
+                            data-value={v.Name}>{v.Name}</a>
+                    </div>
+                </template>
+                <!-- it ends here -->
+            </div>
+
+            <!-- Watch again list -->
+            <h6 class="subheading">Watch Again</h6>
+            <div class="slds-grid slds-wrap vidslayout">
+                <!-- loop to display videos -->
+                <template for:each={videolist} for:item="v">  
+                    <!-- <div key={v.Id} class="slds-col slds-size_1-of-6">
+                        <img src={v.Thumbnail__c} class="imgsize"/>
+                        <a class="slds-align_absolute-center vidname" 
+                            onclick={onClickOfVideoName}
+                            target="_blank"
+                            href={selectedvideourl}
+                            data-value={v.Name}>{v.Name}</a>
+                    </div> -->
+                </template>
+                <!-- it ends here -->
+            </div>
+            <!-- Watch again list ends here -->
+
+        </div>        
+        <!-- 2 layouts for videos Ends here -->
+    </div>
+</template>

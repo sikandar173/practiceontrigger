@@ -1,0 +1,81 @@
+<template>
+            <lightning-card>
+                <div style="display: flex;  justify-content:space-between;">   
+                    <div>
+                        <b>Books N Vids</b> 
+                    </div>
+                    <div> 
+                        <template if:true={cartLength}>
+                            <lightning-icon icon-name="utility:cart" alternative-text="Checkout" title="Checkout" onclick={CartModalBox} ondblclick={hideModalBox} ></lightning-icon>
+                            <lightning-badge label={cartLength}></lightning-badge>
+                        </template>
+                    </div> 
+                </div>
+            </lightning-card>
+            <template if:true={isCartModal}>         
+            <c-cartitem  added-item={addedItem} onpass={fetchValue} remaining-cart={remainingCart}></c-cartitem>
+            </template>
+    <lightning-card class="slds-card">
+        <div class="slds-grid slds-gutters">
+            <template for:each={bookData} for:item="str">
+              <div class="slds-col" key={str.Id}>
+                    <a>             
+                    <img src={str.Image__c} height="150px" width="100px" data-id={str.Id} onclick={showModalBox}>
+                    </a><br>
+                    Name : {str.Book_Name__c}<br>
+                    Price : {str.Price__c}
+                    <br>
+                    <p>{str.message}</p> 
+                   <template if:true={str.stock__c}>
+                      <div>
+                            <lightning-button variant="brand" label="AddToCart"  data-id={str.Id} data-image={str.Image__c}
+                            data-name={str.Book_Name__c} data-author={str.Author_Name__c}
+                            data-publisher={str.Publisher_Name__c}  data-price={str.Price__c}
+                            onclick={handleAddToCart}></lightning-button>
+                       </div>
+                   </template>
+                   <template if:false={str.stock__c}>
+                       <div>
+                            <lightning-button variant="brand"  disabled label="AddToCart" data-id={str.Id} data-image={str.Image__c}
+                            data-name={str.Book_Name__c} data-author={str.Author_Name__c}
+                            data-publisher={str.Publisher_Name__c}  data-price={str.Price__c}
+                            onclick={handleAddToCart}></lightning-button>
+                       </div>
+                    </template>
+             </div>
+            </template>
+        </div>
+        <template if:true={isShowModal}>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                          <div class="slds-modal__header">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                 title="Close" onclick={hideModalBox}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                 size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                                </button>
+                              <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Book Details</h1>
+                           </div>
+                           <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <lightning-record-view-form>
+                                    <p> <strong>Author Name :- </strong>
+                                    <lightning-formatted-text value={bookDetail.Author_Name__c}></lightning-formatted-text>
+                                    <br><br>
+                                    </p>
+                                    <p> <strong>Publisher Name :- </strong>
+                                    <lightning-formatted-text value={bookDetail.Publisher_Name__c}>
+                                    </lightning-formatted-text> <br><br>
+                                    </p>
+                                    <p> <strong>Genre :- </strong>
+                                    <lightning-formatted-text value={bookDetail.Description__c}></lightning-formatted-text>
+                                    <br>
+                                    </p>
+                                </lightning-record-view-form>
+                           </div>
+                    </div>
+            </section>
+        </template>
+    </lightning-card>
+</template>

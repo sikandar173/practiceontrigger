@@ -1,0 +1,57 @@
+/* universal selector - to apply styles for body */
+*{
+    background-color: #f7eaa0;
+}
+
+/* for navbar */
+.navbar:hover
+{
+    border: solid black 0px;
+}
+
+/* for navbar links */
+.login, .contus, .signup
+{
+    font-weight: bold;
+    padding: 10px; 
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* links on hover */
+.login:hover, .contus:hover, .signup:hover
+{
+    background-color: rgb(255, 221, 0); 
+    border-radius: 10px;
+    color: black;
+}
+
+/*2 lyouts */
+
+.bookslayout, .vidslayout
+{
+    border: solid black 1px;
+}
+
+.bookslayout:hover, .vidslayout:hover
+{
+    background-color: rgb(249, 136, 61);
+    border: solid black 1px;
+}
+
+.heading
+{
+    color: rgb(116, 93, 46);
+    font-size: 2rem;
+    padding: 10px;
+    margin-left: 10px;
+}
+.logo
+{
+    text-align: right;
+}
+.User
+{
+    text-align: right;
+    cursor: pointer;
+}

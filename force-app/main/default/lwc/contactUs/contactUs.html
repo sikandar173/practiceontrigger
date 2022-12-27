@@ -1,0 +1,66 @@
+<template>
+    <lightning-card>
+            <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large" >
+                <span class="slds-align_absolute-center" style="color:Black"><U><B>Contact Us</B></U></span>
+            </div>
+            <br>
+            <br>
+            <div style="padding-left:20%;padding-right:20%;padding-top:2px;">
+               
+                    <lightning-input 
+                    type="Text" 
+                    name="name"
+                    placeholder="Name" value={name} onchange={nameHandler}
+                    ></lightning-input>
+                     
+                    <br>
+                    <lightning-input  
+                    value={phone}
+                    onchange={phoneHandler}
+                    type="phone" 
+                    placeholder="+91-9999-999-999" 
+                    ></lightning-input>
+
+                    <br>
+                    <lightning-input  
+                    type="email" 
+                    value={email}
+                    onchange={emailHandler}
+                    placeholder="abc@gmail.com" 
+                    ></lightning-input>
+
+                    <br>
+                    <lightning-textarea  
+                    value={description}
+                    onchane={commentHandler}
+                    type="text-area" 
+                    placeholder="Write a comment"  
+                    onchange={HandleTextArea}></lightning-textarea>
+
+                    <br>
+            <div class="slds-align_absolute-center">
+                    <lightning-button  label="Submit" onclick={HandleSubmit}
+                    ></lightning-button>
+                </div>
+              
+                      
+                   
+                  
+                        
+                       <div>
+                            <lightning-icon icon-name="standard:email" alternative-text="Email" title="Email"></lightning-icon> 
+                            <br>
+                            <br>
+                            <p>Raagvitech@gmail.com</p>
+                        </div>
+    
+                        <br>
+                       
+                        
+                       <div>
+                        <lightning-map map-markers={mapMarkers} zoom-level="15"></lightning-map>
+                        </div>
+            </div>
+
+            </lightning-card>
+</template>

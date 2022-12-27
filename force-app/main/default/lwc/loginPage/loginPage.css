@@ -1,0 +1,21 @@
+*{
+    background-color:rgb(168, 162, 250)
+}
+
+.login-button {
+    color: rgb(211, 190, 7);
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 1rem;
+    font-size: 14px;
+    font-family: Arial;
+}
+
+.email{
+    --slds-c-input-radius-border:0.25rem;
+}
+.password{
+    background-color: aquamarine;
+    --slds-c-input-radius-border:0.25rem; 
+}
